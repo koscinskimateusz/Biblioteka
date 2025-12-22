@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { Injectable } from '@nestjs/common';
+import { Injectable, ConflictException, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, IsNull} from 'typeorm';
 import { Book } from '../entities/book.entity';
+import { Loan } from '../entities/loan.entity';
 
 @Injectable()
 export class BooksService {
@@ -27,13 +28,23 @@ export class BooksService {
         };
     }
 
-    findOne(id: string) {
-        return this.booksRepo.findOneBy({ id });
+    async findOne(id: string) {
+        const book = await this.booksRepo.findOneBy({ id });
+        if (!book) throw new NotFoundException('Nie znaleziono ksi¹¿ki');
+        return book;
     }
 
-    create(data: Partial<Book>) {
+    async create(data: any) { // data jest typu CreateBookDto, ale dla serwisu mo¿e byæ any/interface
         const book = this.booksRepo.create(data);
-        return this.booksRepo.save(book);
+        try {
+            return await this.booksRepo.save(book);
+        } catch (error) {
+            // Kod b³êdu Postgresa dla naruszenia unikalnoœci to '23505'
+            if (error.code === '23505') {
+                throw new ConflictException('Ksi¹¿ka o podanym numerze ISBN ju¿ istnieje.');
+            }
+            throw new InternalServerErrorException();
+        }
     }
 
     async update(id: string, data: Partial<Book>) {
@@ -41,7 +52,21 @@ export class BooksService {
         return this.findOne(id);
     }
 
-    remove(id: string) {
+    async remove(id: string) {
+        
+        await this.findOne(id);
+
+        const activeLoan = await this.booksRepo.manager.count(Loan, {
+            where: {
+                book: { id: id },
+                returnedAt: IsNull() 
+            }
+        });
+
+        if (activeLoan > 0) {
+            throw new ConflictException('Nie mo¿na usun¹æ ksi¹¿ki, która jest obecnie wypo¿yczona!');
+        }
+
         return this.booksRepo.delete(id);
     }
 }

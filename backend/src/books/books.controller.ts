@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Controller, Get, Post, Body, Patch, Param, Delete, Query, Put } from '@nestjs/common';
 import { BooksService } from './books.service';
+import { CreateBookDto } from './dto/create-book.dto';
 
 @Controller('books')
 export class BooksController {
@@ -18,8 +19,8 @@ export class BooksController {
     }
 
     @Post()
-    create(@Body() body: any) {
-        return this.booksService.create(body);
+    create(@Body() createBookDto: CreateBookDto) {
+        return this.booksService.create(createBookDto);
     }
 
     @Put(':id')
