@@ -1,5 +1,15 @@
 <script setup>
-  import { RouterLink, RouterView } from 'vue-router'
+  import { RouterLink, RouterView, useRouter } from 'vue-router'
+  import { ref, computed } from 'vue';
+
+  const router = useRouter();
+  // Sprawdzamy obecność tokena (prosta metoda, dla lepszej reaktywności można użyć Pinia)
+  const isLoggedIn = computed(() => !!localStorage.getItem('token'));
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    router.push('/login');
+  };
 </script>
 
 <template>
@@ -9,6 +19,11 @@
         <RouterLink to="/">Książki</RouterLink>
         <RouterLink to="/readers">Czytelnicy</RouterLink>
         <RouterLink to="/loans">Wypożyczenia</RouterLink>
+
+        <!--<div class="auth-box">-->
+          <button v-if="isLoggedIn" @click="logout" class="btn-logout">Wyloguj</button>
+          <RouterLink v-else to="/login">Zaloguj</RouterLink>
+        <!--</div>-->
       </nav>
     </div>
   </header>

@@ -121,9 +121,9 @@
     loadingData.value = true;
     try {
       const [loansRes, booksRes, readersRes] = await Promise.all([
-        axios.get('/api/loans'),
-        axios.get('/api/books?limit=1000'), // Pobieramy dużo, żeby mieć listę do selecta
-        axios.get('/api/readers')
+        axios.get('/loans'),
+        axios.get('/books?limit=1000'), // Pobieramy dużo, żeby mieć listę do selecta
+        axios.get('/readers')
       ]);
 
       loans.value = loansRes.data;
@@ -144,7 +144,7 @@
     errorMessage.value = '';
 
     try {
-      await axios.post('/api/loans', form.value);
+      await axios.post('/loans', form.value);
 
       // Reset formularza
       form.value = { bookId: '', readerId: '' };
@@ -168,7 +168,7 @@
     if (!confirm("Potwierdzasz zwrot książki?")) return;
 
     try {
-      await axios.patch(`/api/loans/${id}/return`);
+      await axios.patch(`/loans/${id}/return`);
       await loadAllData(); // Odśwież, aby zaktualizować stany magazynowe
     } catch (err) {
       alert("Błąd podczas zwrotu książki.");

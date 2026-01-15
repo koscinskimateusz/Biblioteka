@@ -1,7 +1,7 @@
 <template>
   <div class="books-container">
     <div class="header">
-      <h2>Biblioteka Książek</h2>
+      <h2>Lista Książek</h2>
       <router-link to="/books/new" class="add-btn">+ Dodaj nową</router-link>
     </div>
 
@@ -91,7 +91,7 @@
   
   const fetchBooks = async (page) => {
     try {
-      const response = await axios.get(`/api/books?page=${page}&limit=${limit}`);
+      const response = await axios.get(`/books?page=${page}&limit=${limit}`);
 
       
       books.value = response.data.data;
@@ -122,7 +122,7 @@
     errorMessage.value = '';
 
     try {
-      await axios.delete(`/api/books/${book.id}`);
+      await axios.delete(`/books/${book.id}`);
 
       
       if (books.value.length === 1 && currentPage.value > 1) {

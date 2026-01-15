@@ -110,7 +110,7 @@
 
     try {
       // 2. Wysłanie do API
-      await axios.post('/api/readers', form.value);
+      await axios.post('/readers', form.value);
 
       // 3. Sukces -> powrót do listy
       router.push('/readers');

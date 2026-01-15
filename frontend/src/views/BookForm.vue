@@ -93,7 +93,7 @@
   onMounted(async () => {
     if (isEdit.value) {
       try {
-        const res = await axios.get(`/api/books/${route.params.id}`);
+        const res = await axios.get(`/books/${route.params.id}`);
         form.value = res.data;
       } catch (err) {
         serverError.value = "Nie udało się pobrać danych książki.";
@@ -129,9 +129,9 @@
 
     try {
       if (isEdit.value) {
-        await axios.put(`/api/books/${route.params.id}`, form.value);
+        await axios.put(`/books/${route.params.id}`, form.value);
       } else {
-        await axios.post('/api/books', form.value);
+        await axios.post('/books', form.value);
       }
       // Sukces -> powrót do listy
       router.push('/');

@@ -62,7 +62,7 @@
   // --- Pobieranie Czytelników ---
   const fetchReaders = async () => {
     try {
-      const res = await axios.get('/api/readers');
+      const res = await axios.get('/readers');
       readers.value = res.data;
     } catch (err) {
       console.error("Błąd pobierania czytelników", err);
@@ -82,7 +82,7 @@
 
     try {
       // 3. Strzał do API
-      await axios.delete(`/api/readers/${reader.id}`);
+      await axios.delete(`/readers/${reader.id}`);
 
       // 4. Sukces - odświeżamy listę
       // (Można by też usunąć z tablicy lokalnie: readers.value = readers.value.filter(...))
