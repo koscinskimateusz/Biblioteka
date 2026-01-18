@@ -10,7 +10,7 @@ export class User {
     username: string;
 
     @Column()
-    password: string; // Tu bêdzie hash, nie czysty tekst!
+    password: string; 
 
     @CreateDateColumn()
     createdAt: Date;

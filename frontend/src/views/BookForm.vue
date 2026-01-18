@@ -73,7 +73,7 @@
   const route = useRoute();
   const router = useRouter();
 
-  // Stan formularza
+  
   const form = ref({
     title: '',
     author: '',
@@ -81,15 +81,15 @@
     availableCount: 1
   });
 
-  // Stany UI
+  
   const isSubmitting = ref(false);
-  const serverError = ref(''); // Błąd ogólny (np. z bazy)
-  const errors = ref({}); // Błędy walidacji poszczególnych pól
+  const serverError = ref(''); 
+  const errors = ref({}); 
 
-  // Sprawdzamy tryb edycji
+  
   const isEdit = computed(() => !!route.params.id);
 
-  // Pobranie danych przy edycji
+  
   onMounted(async () => {
     if (isEdit.value) {
       try {
@@ -101,7 +101,7 @@
     }
   });
 
-  // Czyszczenie błędów przy wpisywaniu
+  
   const clearError = (field) => {
     if (errors.value[field]) {
       errors.value[field] = '';
@@ -109,7 +109,7 @@
     serverError.value = '';
   };
 
-  // Prosta walidacja frontendowa (dla szybkości interakcji)
+  
   const validateLocal = () => {
     const errs = {};
     if (!form.value.title.trim()) errs.title = "Tytuł jest wymagany.";
@@ -121,7 +121,7 @@
   };
 
   const saveBook = async () => {
-    // 1. Walidacja lokalna
+    
     if (!validateLocal()) return;
 
     isSubmitting.value = true;
@@ -133,25 +133,23 @@
       } else {
         await axios.post('/books', form.value);
       }
-      // Sukces -> powrót do listy
+      
       router.push('/');
 
     } catch (err) {
-      // 2. Obsługa błędów z Backendu
+      
       if (err.response) {
         const { status, data } = err.response;
 
-        // Konflikt (Duplikat ISBN) - obsłużony w serwisie NestJS
+        
         if (status === 409) {
           serverError.value = data.message;
         }
-        // Błędy walidacji (400 Bad Request z ValidationPipe)
+        
         else if (status === 400 && Array.isArray(data.message)) {
-          // Mapujemy tablicę błędów z NestJS na nasz obiekt errors
+          /
           data.message.forEach(msg => {
-            // NestJS zwraca np: "title must be a string".
-            // Prostym sposobem jest wyświetlenie wszystkiego w serverError
-            // lub parsowanie stringów. Tutaj dla uproszczenia:
+            
             serverError.value = "Formularz zawiera błędy. Sprawdź poprawność danych.";
           });
           console.error(data.message);
@@ -209,7 +207,7 @@
     border-radius: 4px;
     font-size: 16px;
     transition: border-color 0.3s;
-    box-sizing: border-box; /* Ważne, żeby padding nie rozpychał inputa */
+    box-sizing: border-box; 
   }
 
     input:focus {

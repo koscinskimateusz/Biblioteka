@@ -25,7 +25,7 @@ export class AuthController {
         return this.authService.login(user);
     }
 
-    // Tymczasowy endpoint do stworzenia pierwszego admina
+    
     @Post('register')
     async register(@Body() body: RegisterRequest) {
         return this.authService.register(body.username, body.password);

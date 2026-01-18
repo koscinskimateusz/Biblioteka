@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';

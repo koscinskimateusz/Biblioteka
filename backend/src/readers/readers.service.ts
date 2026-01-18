@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable prettier/prettier */
 import { Injectable, ConflictException, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -16,7 +17,7 @@ export class ReadersService {
         try {
             return await this.repo.save(reader);
         } catch (error) {
-            // Obs³uga duplikatu maila
+            
             if (error.code === '23505') {
                 throw new ConflictException('Podany adres email jest ju¿ zarejestrowany w systemie.');
             }
@@ -26,21 +27,21 @@ export class ReadersService {
 
     findAll() {
         return this.repo.find({
-            order: { lastName: 'ASC' } // Sortujemy alfabetycznie po nazwisku
+            order: { lastName: 'ASC' } 
         });
     }
 
-    // Opcjonalnie: metoda do pobrania jednego czytelnika (przyda siê do edycji)
+    
     findOne(id: string) {
         return this.repo.findOneBy({ id });
     }
 
     async remove(id: string) {
-        // 1. SprawdŸ czy czytelnik ma AKTYWNE wypo¿yczenia (niezwrócone ksi¹¿ki)
+        
         const activeLoans = await this.repo.manager.count(Loan, {
             where: {
                 reader: { id: id },
-                returnedAt: IsNull() // Data zwrotu jest pusta = ksi¹¿ka nadal u czytelnika
+                returnedAt: IsNull() 
             }
         });
 
@@ -48,7 +49,7 @@ export class ReadersService {
             throw new ConflictException('Nie mo¿na usun¹æ czytelnika, który ma niezwrócone ksi¹¿ki!');
         }
 
-        // 2. Jeœli czysto -> usuñ
+        
         const result = await this.repo.delete(id);
 
         if (result.affected === 0) {

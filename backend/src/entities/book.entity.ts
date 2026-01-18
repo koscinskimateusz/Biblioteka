@@ -17,7 +17,7 @@ export class Book {
     isbn: string;
 
     @Column({ default: 1 })
-    availableCount: number; // Zmieni³em na camelCase (standard w JS)
+    availableCount: number; 
 
     @OneToMany(() => Loan, loan => loan.book)
     loans: Loan[];

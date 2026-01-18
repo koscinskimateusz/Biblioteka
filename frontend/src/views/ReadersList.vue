@@ -29,9 +29,7 @@
             <td>{{ new Date(reader.createdAt).toLocaleDateString() }}</td>
 
             <td class="actions-cell">
-              <!--<button class="btn-icon edit" disabled title="Edycja (wkrótce)">
-                ✏️
-              </button>-->
+              
 
               <button @click="deleteReader(reader)"
                       class="btn-icon delete"
@@ -57,9 +55,9 @@
 
   const readers = ref([]);
   const errorMessage = ref('');
-  const isDeleting = ref(null); // ID czytelnika, który jest aktualnie usuwany
+  const isDeleting = ref(null);
 
-  // --- Pobieranie Czytelników ---
+  
   const fetchReaders = async () => {
     try {
       const res = await axios.get('/readers');
@@ -70,26 +68,25 @@
     }
   };
 
-  // --- Usuwanie Czytelnika ---
+  
   const deleteReader = async (reader) => {
-    // 1. Potwierdzenie
+    
     const confirmMsg = `Czy na pewno chcesz usunąć czytelnika:\n${reader.firstName} ${reader.lastName}?\n\nTej operacji nie można cofnąć.`;
     if (!window.confirm(confirmMsg)) return;
 
-    // 2. Start procesu (UI)
+    
     isDeleting.value = reader.id;
     errorMessage.value = '';
 
     try {
-      // 3. Strzał do API
+      
       await axios.delete(`/readers/${reader.id}`);
 
-      // 4. Sukces - odświeżamy listę
-      // (Można by też usunąć z tablicy lokalnie: readers.value = readers.value.filter(...))
+      
       await fetchReaders();
 
     } catch (err) {
-      // 5. Obsługa Błędów
+      
       if (err.response && err.response.status === 409) {
         errorMessage.value = `BŁĄD: Nie można usunąć czytelnika ${reader.lastName}, ponieważ ma on niezwrócone książki!`;
       } else {
@@ -169,7 +166,7 @@
     text-align: center;
   }
 
-  /* Akcje */
+  
   .actions-cell {
     display: flex;
     justify-content: center;
@@ -204,7 +201,7 @@
       cursor: wait;
     }
 
-  /* Alerty */
+  
   .alert.error {
     background-color: #ffebee;
     color: #c62828;

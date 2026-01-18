@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Post, Body, Get, Param, Delete} from '@nestjs/common'; // Dodaj Param jeœli planujesz edycjê
+import { Controller, Post, Body, Get, Param, Delete} from '@nestjs/common'; 
 import { ReadersService } from './readers.service';
 import { CreateReaderDto } from './dto/create-reader.dto';
 import { UseGuards } from '@nestjs/common';
@@ -19,7 +19,7 @@ export class ReadersController {
         return this.service.findAll();
     }
     @UseGuards(JwtAuthGuard)
-    // Opcjonalnie dla przysz³ej edycji
+    
     @Get(':id')
     findOne(@Param('id') id: string) {
         return this.service.findOne(id);

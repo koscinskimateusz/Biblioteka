@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable prettier/prettier */
 import { Injectable, ConflictException, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -34,12 +35,12 @@ export class BooksService {
         return book;
     }
 
-    async create(data: any) { // data jest typu CreateBookDto, ale dla serwisu mo¿e byæ any/interface
+    async create(data: any) { 
         const book = this.booksRepo.create(data);
         try {
             return await this.booksRepo.save(book);
         } catch (error) {
-            // Kod b³êdu Postgresa dla naruszenia unikalnoœci to '23505'
+            
             if (error.code === '23505') {
                 throw new ConflictException('Ksi¹¿ka o podanym numerze ISBN ju¿ istnieje.');
             }

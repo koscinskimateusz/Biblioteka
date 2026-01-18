@@ -14,11 +14,11 @@ export class Loan {
     @Column({ type: 'timestamp', nullable: true })
     returnedAt: Date;
 
-    // Relacja Wiele-do-Jednego (Wiele wypo¿yczeñ dotyczy jednej ksi¹¿ki)
+    
     @ManyToOne(() => Book, book => book.loans, { onDelete: 'CASCADE' })
     book: Book;
 
-    // Relacja Wiele-do-Jednego (Wiele wypo¿yczeñ nale¿y do jednego czytelnika)
+    
     @ManyToOne(() => Reader, reader => reader.loans, { onDelete: 'CASCADE' })
     reader: Reader;
 

@@ -20,11 +20,11 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const publicPages = ['/login', '/']; // Strony dostępne bez logowania
+  const publicPages = ['/login', '/']; 
   const authRequired = !publicPages.includes(to.path);
   const loggedIn = localStorage.getItem('token');
 
-  // Jeśli strona wymaga logowania, a nie mamy tokena -> idź do logowania
+  
   if (authRequired && !loggedIn) {
     return next('/login');
   }

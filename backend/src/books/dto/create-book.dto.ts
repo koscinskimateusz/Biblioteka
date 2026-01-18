@@ -10,9 +10,9 @@ export class CreateBookDto {
     @IsNotEmpty({ message: 'Autor nie mo¿e byæ pusty' })
     author: string;
 
-    @IsString()
+    @IsString({ message: 'ISBN musi byæ ci¹giem znaków' })
+    @IsISBN(undefined, { message: 'Nieprawid³owy format ISBN' })
     @IsNotEmpty({ message: 'ISBN jest wymagany' })
- 
     isbn: string;
 
     @IsInt({ message: 'Liczba egzemplarzy musi byæ liczb¹ ca³kowit¹' })

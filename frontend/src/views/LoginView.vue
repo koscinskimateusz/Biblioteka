@@ -35,10 +35,10 @@ const handleLogin = async () => {
       password: password.value
     });
 
-    // Zapisz token w przeglądarce
+    
     localStorage.setItem('token', res.data.access_token);
 
-    // Przekieruj na stronę główną
+    
     router.push('/');
 
   } catch (err) {

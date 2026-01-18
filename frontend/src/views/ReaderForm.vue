@@ -62,30 +62,30 @@
 
   const router = useRouter();
 
-  // Stan formularza
+  
   const form = ref({
     firstName: '',
     lastName: '',
     email: ''
   });
 
-  // Stany UI
+  
   const isSubmitting = ref(false);
   const serverError = ref('');
-  const errors = ref({}); // Lokalne błędy walidacji
+  const errors = ref({}); 
 
-  // Czyszczenie błędów przy pisaniu
+  
   const clearError = (field) => {
     if (errors.value[field]) errors.value[field] = '';
     serverError.value = '';
   };
 
-  // Prosta walidacja adresu email (regex)
+  
   const isValidEmail = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
-  // Walidacja frontendowa
+  
   const validateLocal = () => {
     const errs = {};
     if (!form.value.firstName.trim()) errs.firstName = "Imię jest wymagane.";
@@ -102,35 +102,34 @@
   };
 
   const saveReader = async () => {
-    // 1. Walidacja lokalna
+    
     if (!validateLocal()) return;
 
     isSubmitting.value = true;
     serverError.value = '';
 
     try {
-      // 2. Wysłanie do API
+      
       await axios.post('/readers', form.value);
 
-      // 3. Sukces -> powrót do listy
+      
       router.push('/readers');
 
     } catch (err) {
-      // 4. Obsługa błędów
+      
       if (err.response) {
         const { status, data } = err.response;
 
-        // Konflikt (Duplikat emaila)
+        
         if (status === 409) {
           serverError.value = data.message;
-          // Opcjonalnie: podświetl pole email
+          
           errors.value.email = "Ten email jest zajęty.";
         }
-        // Błędy walidacji (400 Bad Request)
+        
         else if (status === 400 && Array.isArray(data.message)) {
           serverError.value = "Formularz zawiera błędy. Sprawdź poprawność danych.";
-          // Tutaj można by mapować błędy z backendu na pola,
-          // ale walidacja lokalna zazwyczaj wyłapuje to wcześniej.
+          
         }
         else {
           serverError.value = "Wystąpił błąd serwera. Spróbuj ponownie później.";
@@ -145,7 +144,7 @@
 </script>
 
 <style scoped>
-  /* Te same style co w BookForm dla spójności */
+  
   .form-container {
     display: flex;
     justify-content: center;

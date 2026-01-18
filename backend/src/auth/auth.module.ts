@@ -12,8 +12,8 @@ import { JwtStrategy } from './jwt.strategy';
         UsersModule,
         PassportModule,
         JwtModule.register({
-            secret: 'TAJNY_KLUCZ_DEV', // W produkcji u¿yj zmiennych œrodowiskowych .env!
-            signOptions: { expiresIn: '1h' }, // Token wa¿ny godzinê
+            secret: 'TAJNY_KLUCZ_DEV', 
+            signOptions: { expiresIn: '1h' }, 
         }),
     ],
     providers: [AuthService, JwtStrategy],

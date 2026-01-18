@@ -91,23 +91,23 @@
   import { ref, onMounted, computed } from 'vue';
   import axios from 'axios';
 
-  // Dane
+  
   const loans = ref([]);
   const readers = ref([]);
   const books = ref([]);
   const loadingData = ref(true);
 
-  // Formularz
+  
   const form = ref({ bookId: '', readerId: '' });
   const isSubmitting = ref(false);
   const errorMessage = ref('');
 
-  // Computed: filtrujemy książki, żeby pokazać tylko te, które mają availableCount > 0
+  
   const availableBooks = computed(() => {
     return books.value.filter(b => b.availableCount > 0);
   });
 
-  // Formatowanie daty
+  
   const formatDate = (dateStr) => {
     if (!dateStr) return '-';
     return new Date(dateStr).toLocaleString('pl-PL', {
@@ -116,18 +116,18 @@
     });
   };
 
-  // Pobieranie wszystkich danych potrzebnych do widoku
+  
   const loadAllData = async () => {
     loadingData.value = true;
     try {
       const [loansRes, booksRes, readersRes] = await Promise.all([
         axios.get('/loans'),
-        axios.get('/books?limit=1000'), // Pobieramy dużo, żeby mieć listę do selecta
+        axios.get('/books?limit=1000'), 
         axios.get('/readers')
       ]);
 
       loans.value = loansRes.data;
-      // Backend zwraca paginację dla książek w .data, więc bierzemy .data.data
+      
       books.value = booksRes.data.data ? booksRes.data.data : booksRes.data;
       readers.value = readersRes.data;
     } catch (err) {
@@ -138,7 +138,7 @@
     }
   };
 
-  // --- TWORZENIE WYPOŻYCZENIA ---
+  
   const createLoan = async () => {
     isSubmitting.value = true;
     errorMessage.value = '';
@@ -146,15 +146,15 @@
     try {
       await axios.post('/loans', form.value);
 
-      // Reset formularza
+      
       form.value = { bookId: '', readerId: '' };
 
-      // Odśwież dane (to ważne, bo musimy pobrać zaktualizowany stan magazynowy książek!)
+      
       await loadAllData();
 
     } catch (err) {
       if (err.response && err.response.data.message) {
-        errorMessage.value = err.response.data.message; // Np. "Brak dostępnych egzemplarzy"
+        errorMessage.value = err.response.data.message; 
       } else {
         errorMessage.value = "Wystąpił błąd podczas wypożyczania.";
       }
@@ -163,13 +163,13 @@
     }
   };
 
-  // --- ZWROT KSIĄŻKI ---
+  
   const returnBook = async (id) => {
     if (!confirm("Potwierdzasz zwrot książki?")) return;
 
     try {
       await axios.patch(`/loans/${id}/return`);
-      await loadAllData(); // Odśwież, aby zaktualizować stany magazynowe
+      await loadAllData(); 
     } catch (err) {
       alert("Błąd podczas zwrotu książki.");
     }
@@ -234,7 +234,7 @@
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
-    height: 42px; /* Wyrównanie do selecta */
+    height: 42px; 
   }
 
     .btn-primary:disabled {
@@ -248,7 +248,7 @@
     margin-top: 5px;
   }
 
-  /* Tabela */
+  
   .table-wrapper {
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     border-radius: 8px;
@@ -273,7 +273,7 @@
     color: #333;
   }
 
-  /* Styl dla zwróconych wierszy */
+  
   tr.returned {
     background-color: #fcfcfc;
     color: #999;
