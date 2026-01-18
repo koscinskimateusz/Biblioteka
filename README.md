@@ -240,10 +240,10 @@ TypeOrmModule.forRoot({
 
 ### Model danych (ERD)
 
-```
+
 <img width="2192" height="893" alt="Zrzut ekranu 2026-01-18 154723" src="https://github.com/user-attachments/assets/91fb20f9-4f8d-40f1-8c5e-006e176b9dba" />
 
-```
+
 
 ### Struktura katalogów
 
