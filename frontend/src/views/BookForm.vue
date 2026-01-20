@@ -121,7 +121,7 @@
   };
 
   const saveBook = async () => {
-    
+    // Walidacja lokalna
     if (!validateLocal()) return;
 
     isSubmitting.value = true;
@@ -133,27 +133,39 @@
       } else {
         await axios.post('/books', form.value);
       }
-      
+
       router.push('/');
 
     } catch (err) {
-      
+
       if (err.response) {
         const { status, data } = err.response;
 
-        
+        // Konflikt - duplikat ISBN
         if (status === 409) {
           serverError.value = data.message;
         }
-        
-        else if (status === 400 && Array.isArray(data.message)) {
-          /
-          data.message.forEach(msg => {
-            
-            serverError.value = "Formularz zawiera błędy. Sprawdź poprawność danych.";
-          });
-          console.error(data.message);
+
+        // Błędy walidacji z backendu (400)
+        else if (status === 400) {
+          console.log('Pełna odpowiedź błędu:', data); // DEBUG
+
+          if (Array.isArray(data.message)) {
+            // Wyświetl wszystkie błędy walidacji
+            serverError.value = data.message.join(' • ');
+          } else if (typeof data.message === 'string') {
+            serverError.value = data.message;
+          } else {
+            serverError.value = JSON.stringify(data);
+          }
         }
+
+        // Brak autoryzacji
+        else if (status === 401) {
+          serverError.value = "Sesja wygasła. Zaloguj się ponownie.";
+          setTimeout(() => router.push('/login'), 2000);
+        }
+
         else {
           serverError.value = "Wystąpił nieoczekiwany błąd serwera.";
         }

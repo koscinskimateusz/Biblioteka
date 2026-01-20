@@ -11,7 +11,7 @@ export class CreateBookDto {
     author: string;
 
     @IsString({ message: 'ISBN musi byæ ci¹giem znaków' })
-    @IsISBN(undefined, { message: 'Nieprawid³owy format ISBN' })
+    //@IsISBN(undefined, { message: 'Nieprawid³owy format ISBN' })
     @IsNotEmpty({ message: 'ISBN jest wymagany' })
     isbn: string;
 
