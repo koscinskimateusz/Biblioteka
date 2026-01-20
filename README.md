@@ -177,19 +177,19 @@ npm run dev
 | Widok | Ścieżka | Opis |
 |-------|---------|------|
 | Lista książek | `/` | Strona główna z listą książek |
-<img width="2880" height="1475" alt="Zrzut ekranu 2026-01-18 135327" src="https://github.com/user-attachments/assets/cd9284c2-f6a6-4fa8-8b22-5cca70c004a9" />
+<img width="2880" height="1475" alt="Zrzut ekranu 2026-01-18 135327" src="[https://github.com/user-attachments/assets/cd9284c2-f6a6-4fa8-8b22-5cca70c004a9](https://github.com/koscinskimateusz/Biblioteka/blob/main/Screenshots/Lista%20ksi%C4%85%C5%BCek.png)" />
 | Formularz książki | `/books/new` | Dodawanie nowej książki |
-<img width="2880" height="1475" alt="Zrzut ekranu 2026-01-18 135539" src="https://github.com/user-attachments/assets/4e4f43eb-c9db-41db-802f-77669b24fe05" />
+<img width="2880" height="1475" alt="Zrzut ekranu 2026-01-18 135539" src="[https://github.com/user-attachments/assets/4e4f43eb-c9db-41db-802f-77669b24fe05](https://github.com/koscinskimateusz/Biblioteka/blob/main/Screenshots/Dodaj%20now%C4%85%20ksi%C4%85%C5%BCk%C4%99.png)" />
 | Edycja książki | `/books/:id/edit` | Edycja istniejącej książki |
-<img width="2880" height="1475" alt="Zrzut ekranu 2026-01-18 135749" src="https://github.com/user-attachments/assets/e7e0dbd1-e435-4db1-8702-cfdfd25bb257" />
+<img width="2880" height="1475" alt="Zrzut ekranu 2026-01-18 135749" src="[https://github.com/user-attachments/assets/e7e0dbd1-e435-4db1-8702-cfdfd25bb257](https://github.com/koscinskimateusz/Biblioteka/blob/main/Screenshots/Edycja%20ksi%C4%85%C5%BCki.png)" />
 | Czytelnicy | `/readers` | Lista czytelników |
-<img width="2880" height="1475" alt="Zrzut ekranu 2026-01-18 135839" src="https://github.com/user-attachments/assets/c37e504a-4f7e-453c-b345-540a3216b3bf" />
+<img width="2880" height="1475" alt="Zrzut ekranu 2026-01-18 135839" src="[https://github.com/user-attachments/assets/c37e504a-4f7e-453c-b345-540a3216b3bf](https://github.com/koscinskimateusz/Biblioteka/blob/main/Screenshots/Lista%20czytelnik%C3%B3w.png)" />
 | Nowy czytelnik | `/readers/new` | Dodawanie czytelnika |
-<img width="2879" height="1478" alt="Zrzut ekranu 2026-01-18 135909" src="https://github.com/user-attachments/assets/ee9d5697-0458-4736-8ec2-824140eec463" />
+<img width="2879" height="1478" alt="Zrzut ekranu 2026-01-18 135909" src="[https://github.com/user-attachments/assets/ee9d5697-0458-4736-8ec2-824140eec463](https://github.com/koscinskimateusz/Biblioteka/blob/main/Screenshots/Dodanie%20czytelnika.png)" />
 | Wypożyczenia | `/loans` | Lista wypożyczeń |
-<img width="2879" height="1477" alt="Zrzut ekranu 2026-01-18 153930" src="https://github.com/user-attachments/assets/d05626b3-6e07-4950-9d62-06c7ad89005e" />
+<img width="2879" height="1477" alt="Zrzut ekranu 2026-01-18 153930" src="[https://github.com/user-attachments/assets/d05626b3-6e07-4950-9d62-06c7ad89005e](https://github.com/koscinskimateusz/Biblioteka/blob/main/Screenshots/Wypo%C5%BCyczenie.png)" />
 | Logowanie | `/login` | Panel logowania |
-<img width="2880" height="1476" alt="Zrzut ekranu 2026-01-18 135129" src="https://github.com/user-attachments/assets/99912140-3746-4b37-a461-edaec591751a" />
+<img width="2880" height="1476" alt="Zrzut ekranu 2026-01-18 135129" src="[https://github.com/user-attachments/assets/99912140-3746-4b37-a461-edaec591751a](https://github.com/koscinskimateusz/Biblioteka/blob/main/Screenshots/Schemat%20ERD.png)" />
 
 ## 5. Kod i konfiguracja
 
