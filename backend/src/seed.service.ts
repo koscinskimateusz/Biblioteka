@@ -34,7 +34,7 @@ export class SeedService implements OnApplicationBootstrap {
                 username: 'admin',
                 password: hashedPassword,
             });
-            console.log('Dodano uøytkownika: admin');
+            console.log('Dodano u≈ºytkownika: admin');
         }
     }
 
@@ -43,15 +43,15 @@ export class SeedService implements OnApplicationBootstrap {
         const count = await this.bookRepo.count();
         if (count === 0) {
             const books = [
-                { title: 'W≥adca Pierúcieni: Druøyna Pierúcienia', author: 'J.R.R. Tolkien', isbn: '978-83-7319-172-3', availableCount: 5 },
+                { title: 'W≈Çadca Pier≈õcieni: Dru≈ºyna Pier≈õcienia', author: 'J.R.R. Tolkien', isbn: '978-83-7319-172-3', availableCount: 5 },
                 { title: 'Czysty Kod', author: 'Robert C. Martin', isbn: '978-83-283-0234-1', availableCount: 0 },
-                { title: 'Wiedümin: Ostatnie Øyczenie', author: 'Andrzej Sapkowski', isbn: '978-83-7578-063-5', availableCount: 10 },
-                { title: 'Harry Potter i KamieÒ Filozoficzny', author: 'J.K. Rowling', isbn: '978-83-8008-211-3', availableCount: 2 },
+                { title: 'Wied≈∫min: Ostatnie ≈ªyczenie', author: 'Andrzej Sapkowski', isbn: '978-83-7578-063-5', availableCount: 10 },
+                { title: 'Harry Potter i Kamie≈Ñ Filozoficzny', author: 'J.K. Rowling', isbn: '978-83-8008-211-3', availableCount: 2 },
                 { title: 'Diuna', author: 'Frank Herbert', isbn: '978-83-7510-348-9', availableCount: 2 },
                 { title: 'Dzieci Diuny', author: 'Frank Herbert', isbn: '948-23-7010-148-7', availableCount: 2 },
             ];
             await this.bookRepo.save(books);
-            console.log('Dodano przyk≥adowe ksiπøki');
+            console.log('Dodano przyk≈Çadowe ksiƒÖ≈ºki');
         }
     }
 
@@ -62,10 +62,10 @@ export class SeedService implements OnApplicationBootstrap {
             const readers = [
                 { firstName: 'Jan', lastName: 'Kowalski', email: 'jan.kowalski@example.com' },
                 { firstName: 'Anna', lastName: 'Nowak', email: 'anna.nowak@example.com' },
-                { firstName: 'Mateusz', lastName: 'KoúciÒski', email: 'mateusz.koscinski@example.com' },
+                { firstName: 'Mateusz', lastName: 'Ko≈õci≈Ñski', email: 'mateusz.koscinski@example.com' },
             ];
             await this.readerRepo.save(readers);
-            console.log(' Dodano przyk≥adowych czytelnikÛw');
+            console.log(' Dodano przyk≈Çadowych czytelnik√≥w');
         }
     }
 }
