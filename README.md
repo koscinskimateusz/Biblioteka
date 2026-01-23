@@ -1,13 +1,14 @@
-```markdown
 # 📚 Biblioteka
 
-> **Biblioteka** to nowoczesna pełnostackowa aplikacja webowa do zarządzania biblioteką, zbudowana z wykorzystaniem Vue.js 3 i NestJS. System umożliwia katalogowanie książek, zarządzanie czytelnikami oraz śledzenie wypożyczeń.
+> **Biblioteka** to nowoczesna pełnostackowa aplikacja webowa do zarządzania biblioteką, zbudowana z wykorzystaniem Vue.js 3 i NestJS.
+System umożliwia katalogowanie książek, zarządzanie czytelnikami oraz śledzenie wypożyczeń.
 
 ---
 
 ## 🚀 O Projekcie
 
-Biblioteka to skalowalna platforma zaprojektowana do cyfrowego zarządzania zasobami bibliotecznymi. Aplikacja wykorzystuje najnowszy ekosystem Vue.js (wersja 3) oraz framework NestJS z TypeORM dla bezpiecznego i wydajnego zarządzania danymi.
+Biblioteka to skalowalna platforma zaprojektowana do cyfrowego zarządzania zasobami bibliotecznymi.
+Aplikacja wykorzystuje najnowszy ekosystem Vue.js (wersja 3) oraz framework NestJS z TypeORM dla bezpiecznego i wydajnego zarządzania danymi.
 
 ### ✨ Kluczowe Funkcje
 
