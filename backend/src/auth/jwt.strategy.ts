@@ -5,6 +5,7 @@
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 interface JwtPayload {
     sub: number;
@@ -13,11 +14,11 @@ interface JwtPayload {
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-    constructor() {
+    constructor(private configService: ConfigService) {
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
             ignoreExpiration: false,
-            secretOrKey: 'TAJNY_KLUCZ_DEV', // Musi byæ taki sam jak w module
+            secretOrKey: configService.get<string>('JWT_SECRET') || 'tymczasowy_klucz',
         });
     }
 

@@ -21,7 +21,8 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import axios from 'axios';
+  import axios from 'axios';
+  import { loginUser } from '../authState';
 
 const username = ref('');
 const password = ref('');
@@ -36,7 +37,8 @@ const handleLogin = async () => {
     });
 
     
-    localStorage.setItem('token', res.data.access_token);
+    
+    loginUser(res.data.access_token);
 
     
     router.push('/');

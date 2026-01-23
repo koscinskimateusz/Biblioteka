@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { IsString, IsNotEmpty, IsInt, Min, IsISBN, IsOptional } from 'class-validator';
+import { IsString, IsNotEmpty, IsInt, Min, IsOptional, Matches } from 'class-validator';
 
 export class CreateBookDto {
     @IsString({ message: 'Tytu³ musi byæ ci¹giem znaków' })
@@ -11,7 +11,8 @@ export class CreateBookDto {
     author: string;
 
     @IsString({ message: 'ISBN musi byæ ci¹giem znaków' })
-    //@IsISBN(undefined, { message: 'Nieprawid³owy format ISBN' })
+        //@IsISBN(13, { message: 'Format ISBN to 000-00-00-00000-0' })
+    @Matches(/^[0-9- ]{10,20}$/, { message: 'Format ISBN to 000-00-0000-000-0'})
     @IsNotEmpty({ message: 'ISBN jest wymagany' })
     isbn: string;
 
