@@ -604,7 +604,7 @@ const saveBook = async () => {
 
 ### 🔐 Ekran Logowania
 
-(./Screenshots/Ekran logowania.png)
+![Ekran logowania](./Screenshots/Ekran_logowania.png)
 
 Panel logowania z:
 - **Walidacją formularza** - natychmiastowe komunikaty błędów
@@ -613,7 +613,7 @@ Panel logowania z:
 
 ### 📊 Lista Książek
 
-(./Screenshots/Lista książek.png)
+![Lista książek](./Screenshots/Lista_książek.png)
 
 Główny widok katalogu:
 - **Paginacja** - wydajne ładowanie dużych zbiorów
@@ -623,8 +623,8 @@ Główny widok katalogu:
 
 ### ✏️ Formularz Książki
 
-(./Screenshots/Dodaj nową książkę.png)
-(./Screenshots/Edycja książki.png)
+![Dodaj nową książkę](./Screenshots/Dodaj_nową_książkę.png)
+![Edycja książki](./Screenshots/Edycja_książki.png)
 
 Formularz dodawania/edycji z:
 - **Walidacją w czasie rzeczywistym** - błędy przy polach
@@ -634,8 +634,8 @@ Formularz dodawania/edycji z:
 
 ### 👥 Lista Czytelników
 
-(./Screenshots/Lista czytelników.png)
-(./Screenshots/Dodanie czytelnika.png)
+![Lista czytelników](./Screenshots/Lista_czytelników.png)
+![Dodanie czytelnika](./Screenshots/Dodanie_czytelnika.png)
 
 Zarządzanie czytelnikami:
 - **Dane kontaktowe** - imię, nazwisko, email
@@ -644,7 +644,7 @@ Zarządzanie czytelnikami:
 
 ### 📋 System Wypożyczeń
 
-(./Screenshots/Wypożyczenie.png)
+![Wypożyczenia](./Screenshots/Wypożyczenie.png)
 
 Śledzenie wypożyczeń:
 - **Status wypożyczenia** - aktywne vs zwrócone
@@ -700,7 +700,7 @@ Aplikacja używa **PostgreSQL** jako bazy danych z **TypeORM** dla bezpiecznego 
 
 ### Diagram Bazy Danych
 
-(./Screenshots/Schemat ERD.png)
+![Schemat ERD](./Screenshots/Schemat_ERD.png)
 
 ### Encje i Relacje
 
