@@ -877,7 +877,7 @@ DATABASE_PORT=5432
 DATABASE_USER=myuser
 DATABASE_PASSWORD=mypassword
 DATABASE_NAME=mydatabase
-JWT_SECRET=TAJNY_KLUCZ
+JWT_SECRET=TAJNY_KLUCZ_DEV
 ```
 
 **3. Uruchom wszystkie serwisy:**
@@ -895,6 +895,13 @@ docker-compose up --build
 
 ```
 docker-compose ps
+```
+
+**6. Zaloguj się:**
+
+```
+Login: admin
+Hasło: admin123
 ```
 
 **6. Zatrzymanie:**
