@@ -897,6 +897,13 @@ docker-compose up --build
 docker-compose ps
 ```
 
+**6. Zaloguj się:**
+
+```
+Login: admin
+Hasło: admin123
+```
+
 **6. Zatrzymanie:**
 
 ```
